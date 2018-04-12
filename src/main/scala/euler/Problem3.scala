@@ -12,9 +12,9 @@ object Problem3 {
   def get_largest_prime_factor(n: Int): Int = get_prime_factors(n).max
 
   @tailrec
-  def get_prime_factors(x: Int, a: Int = 2, list: List[Int] = Nil): List[Int] = a*a > x match {
-    case false if x % a == 0 => get_prime_factors(x / a, a    , a :: list)
-    case false               => get_prime_factors(x    , a + 1, list)
-    case true                => x :: list
+  def get_prime_factors(x: Int, a: Int = 2, seq: Seq[Int] = Nil): Seq[Int] = a*a > x match {
+    case false if x % a == 0 => get_prime_factors(x / a, a    , a +: seq)
+    case false               => get_prime_factors(x    , a + 1, seq)
+    case true                => x +: seq
   }
 }
